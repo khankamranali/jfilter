@@ -1,25 +1,25 @@
 # jfilter
 Filter (query), map (select) and reduce (aggregate) objects in a Java collection
 
-JFilter Documentation
+#JFilter Documentation
 
 Please note that word query and filter is used interchangeably in this document.
 
-Installation
+#Installation
 
 Download latest JFilter version from download page.
 Download Jackson core and mapper jars of version 1.9.0+ from http://wiki.fasterxml.com/JacksonDownload.
 Add JFilter and Jackson jars in you project class path.
-Javadocs
+#Javadocs
 
 JFilter
 
-Overview
+#Overview
 
-JFilter library has only one class gk.jfilter.JFilter to filter/query, map/select and reduce/aggregate objects in a collection. You should create only one instance of JFilter class for each collection object to be filtered. JFilter constructor has Iterable argument, so apart from collection you can filter any class object which implements Iterable interface.
+JFilter library has only one class [gk.jfilter.JFilter] (http://code.google.com/p/jfilter/source/browse/trunk/jfilter/src/main/java/gk/jfilter/JFilter.java) to filter/query, map/select and reduce/aggregate objects in a collection. You should create only one instance of JFilter class for each collection object to be filtered. JFilter constructor has Iterable argument, so apart from collection you can filter any class object which implements Iterable interface.
 
-Following are different ways to execute filter. ```
-
+##Following are different ways to execute filter.
+```
 Collection pets = new ArrayList(); //populate pets collection
 
 JFilter jfilter = new JFilter(pets, Pet.class); Collection cats = filter.filter("{'type':'?1'}", "CAT").out(new ArrayList());
@@ -32,21 +32,22 @@ Map parameters = new HashMap();
 
 parameters.put("type", "CAT"); Collection cats = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList());
 
-parameters.put("type", "DOG"); Collection dogs = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList()); ```
+parameters.put("type", "DOG"); Collection dogs = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList());
+```
 
-Sample programs
+1. [Sample programs] (https://github.com/khankamranali/jfilter/tree/master/src/main/java/gk/jfilter/JFilter.java)
 
-Simple sample
+2. Simple sample
 
-Product sample
+3. Product sample
 
-Sales order sample
+4. Sales order sample
 
-Simple MapReduce sample
+5. Simple MapReduce sample
 
-Product MapReduce sample
+6. Product MapReduce sample
 
-How to write json filter
+##How to write json filter
 
 JFilter works on methods not on class properties, so if you want to filter on properties then there should be a corresponding getter methods.
 For getter properties you can either give the property name or getter method name in the json filter. For example if a class has getName() method then you can write your json query like follows. Both produce same result.
