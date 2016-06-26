@@ -1,9 +1,8 @@
 # JFilter
 Filter (query), map (select) and reduce (aggregate) objects in a Java collection
 
-# This project is migrated from http://code.google.com/p/jfilter. It was started in 2012 year, reached .6 version and was downloaded about 1000 times.
-# There is a nice blog written on Jfilter.
-[querying/filtering in-memory data using JFilter] (http://blogsbyabdullah.blogspot.in/2012/07/queryingfiltering-in-memory-data-using.html)
+####### This project is migrated from http://code.google.com/p/jfilter. It was started in 2012 year, reached .6 version and was downloaded about 1000 times.
+
 # Jfilter Performance
 [JFilter Performance] (https://khankamranali.wordpress.com/category/jfilter/)
 #JFilter Documentation
@@ -115,3 +114,6 @@ JFilter supports inherited properties and method of any level. That means you ca
 
 Example:
 {'getClass.getName':'eg.MyClass'} - filter collection where class name is "eg.MyClass".
+
+## There is a nice blog written on Jfilter.
+[querying/filtering in-memory data using JFilter] (http://blogsbyabdullah.blogspot.in/2012/07/queryingfiltering-in-memory-data-using.html)
