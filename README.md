@@ -16,11 +16,11 @@ Download Jackson core and mapper jars of version 1.9.0+ from http://wiki.fasterx
 Add JFilter and Jackson jars in you project class path.
 ##Javadocs
 
-[JFilter] (http://code.google.com/p/jfilter/source/browse/trunk/jfilter/src/main/java/gk/jfilter/JFilter.java)
+[JFilter] (https://github.com/khankamranali/jfilter/tree/master/src/main/java/gk/jfilter/JFilter.java)
 
 ##Overview
 
-JFilter library has only one class [gk.jfilter.JFilter] (http://code.google.com/p/jfilter/source/browse/trunk/jfilter/src/main/java/gk/jfilter/JFilter.java) to filter/query, map/select and reduce/aggregate objects in a collection. You should create only one instance of JFilter class for each collection object to be filtered. JFilter constructor has Iterable argument, so apart from collection you can filter any class object which implements Iterable interface.
+JFilter library has only one class [gk.jfilter.JFilter] (https://github.com/khankamranali/jfilter/tree/master/src/main/java/gk/jfilter/JFilter.java) to filter/query, map/select and reduce/aggregate objects in a collection. You should create only one instance of JFilter class for each collection object to be filtered. JFilter constructor has Iterable argument, so apart from collection you can filter any class object which implements Iterable interface.
 
 ##Following are different ways to execute filter.
 ```
