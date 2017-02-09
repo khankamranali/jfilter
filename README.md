@@ -25,18 +25,17 @@ JFilter library has only one class [gk.jfilter.JFilter] (https://github.com/khan
 ##Following are different ways to execute filter.
 ```
 Collection pets = new ArrayList(); //populate pets collection
+JFilter jfilter = new JFilter(pets, Pet.class);
 
-JFilter jfilter = new JFilter(pets, Pet.class); Collection cats = filter.filter("{'type':'?1'}", "CAT").out(new ArrayList());
-
-Collection pets = new ArrayList(); //populate pets collection
-
+Collection cats = filter.filter("{'type':'?1'}", "CAT").out(new ArrayList());
 JFilter jfilter = new JFilter(pets, Pet.class);
 
 Map parameters = new HashMap();
+parameters.put("type", "CAT"); 
+Collection cats = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList());
 
-parameters.put("type", "CAT"); Collection cats = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList());
-
-parameters.put("type", "DOG"); Collection dogs = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList());
+parameters.put("type", "DOG"); 
+Collection dogs = jfilter.filter("{'type':'?type'}", parameters).out(new ArrayList());
 ```
 
 ##Sample programs 
@@ -99,10 +98,18 @@ See the code of [Data type test program] (https://github.com/khankamranali/jfilt
 Parameterized filters are when you do not provide attributes value in json filter string for example {'id':'?id'}. Question mark is used to indicate that value will be given as argument of JFilter.execute method. There are two type of parameterized filters:
 
 * Type 1: In this type Filter parameters are written as {'attribute':'?string'} where "string" is any string. Parameter values are given as Map argument where Map key is "string" and value is object of type "attribute" specified in the filter. In case of operator $in and $nin values are given as List.
- Example: JFilter<SalesOrder> filter = new JFilter<SalesOrder>(orders, SalesOrder.class); Map<String, Integer> parameters = new HashMap<String, Integer>(1); parameters.put("id", 10); Collection<SalesOrder> fc = filter.filter("{ 'id':{'$le':'?id'}}", parameters).out(new ArrayList<SalesOrder>());
-
+ Example:
+ ```
+ JFilter<SalesOrder> jfilter = new JFilter<SalesOrder>(orders, SalesOrder.class); 
+ Map<String, Integer> parameters = new HashMap<String, Integer>(1); parameters.put("id", 10);
+ Collection<SalesOrder> fc = jfilter.filter("{ 'id':{'$le':'?id'}}", parameters).out(new ArrayList<SalesOrder>());
+```
 * Type 2: In this type parameters are given as "?1", "?2" etc in the filter, starting from "?1" to "?n" where n is integer. Parameter values are are picked from corresponding argument position in the variable arguments of JFilter.execute method.
- Example: JFilter<SalesOrder> filter = new JFilter<SalesOrder>(orders, SalesOrder.class); Collection<SalesOrder> fc = filter.filter("{ 'id':{'$le':'?1'}}", 10).out(new ArrayList<SalesOrder>());
+ Example:
+ ```
+JFilter<SalesOrder> filter = new JFilter<SalesOrder>(orders, SalesOrder.class);
+Collection<SalesOrder> fc = filter.filter("{ 'id':{'$le':'?1'}}", 10).out(new ArrayList<SalesOrder>());
+```
 
 JFilter does not support non parameterized queries.
 
