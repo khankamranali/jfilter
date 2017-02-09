@@ -1,8 +1,36 @@
 # JFilter
-Filter (query), map (select) and reduce (aggregate) objects in a Java collection
+JFilter is a simple and high performance open source library to filter (query), map (select) and reduce (aggregate) objects in a Java collection. Query is given in json format like Mongodb queries.
 
 ####### This project is migrated from http://code.google.com/p/jfilter. It was started in 2012 year, reached .6 version and was downloaded about 1000 times.
 
+#Key features
+
+* Simple API, has only one interface class, can call filter, map and reduce functions any number of times and in any order. See following examples.
+```
+jfilter.filter("{'code':{'$le':'?1'}}", 5).<Sku> map("skus").filter("{'price':'?1'}", 30).out(new ArrayList<Sku>());
+jfilter.filter("{'code':{'$le':'?1'}}", 5).<Integer> map("skus.price").out(new ArrayList<Integer>());
+jfilter.filter("{'code':{'$le':'?1'}}", 5).<Integer> map("skus.price").max();
+jfilter.<Integer> map("skus.price").max();
+```
+
+* Support of collection (java.util.Collection, java.util.Map and Array) properties.
+
+* Support of collection inside collection properties of any depth.
+* Support of java generics.
+* Support of non property methods, i.e. you can specify method name instead of property name in a query. Example: {'toString':'?1'}
+* Support of inherited properties and method of any level. Example: {'getClass.getName':'eg.MyClass'} - where getClass() method of Object class is used to filter objects in a collection.
+* Support of inner queries/filters.
+* Support of parameterized queries/filters.
+* Can filter 10 thousand records in few ms, 100 thousand in few 10 ms and 1 million records in few 100 ms. See the performace report.
+* Filter ( query) is given in simple json format, it is like Mangodb queries. Following are some examples.
+```
+{ 'id':{'$le':'?id'}
+{ 'id': {'$in':'?idList'}}
+{'lineItems.lineAmount':'?amount'}
+{ '$and':[{'id': '?id'}, {'billingAddress.city':'?city'}]}
+{'lineItems.taxes':{ 'key':{'code':'?code'}, 'value':{'$gt': '?value'}}}
+{'$or':[{'code':'?code'},{'skus': {'$and':[{'price':{'$in':'?priceList'}}, {'code':'?skuCode'}]}}]}
+```
 # Jfilter Performance
 [JFilter Performance] (https://khankamranali.wordpress.com/category/jfilter/)
 #JFilter Documentation
