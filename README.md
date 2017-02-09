@@ -99,7 +99,7 @@ Parameterized filters are when you do not provide attributes value in json filte
 
 * Type 1: In this type Filter parameters are written as {'attribute':'?string'} where "string" is any string. Parameter values are given as Map argument where Map key is "string" and value is object of type "attribute" specified in the filter. In case of operator $in and $nin values are given as List.
 
-###Example:
+#####Example:
 ```
  JFilter<SalesOrder> jfilter = new JFilter<SalesOrder>(orders, SalesOrder.class); 
  Map<String, Integer> parameters = new HashMap<String, Integer>(1); parameters.put("id", 10);
@@ -107,7 +107,7 @@ Parameterized filters are when you do not provide attributes value in json filte
  ```
 * Type 2: In this type parameters are given as "?1", "?2" etc in the filter, starting from "?1" to "?n" where n is integer. Parameter values are are picked from corresponding argument position in the variable arguments of JFilter.execute method.
 
-###Example:
+#####Example:
 ```
 JFilter<SalesOrder> filter = new JFilter<SalesOrder>(orders, SalesOrder.class);
 Collection<SalesOrder> fc = filter.filter("{ 'id':{'$le':'?1'}}", 10).out(new ArrayList<SalesOrder>());
