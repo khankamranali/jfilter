@@ -152,5 +152,6 @@ JFilter supports inherited properties and method of any level. That means you ca
 Example:
 {'getClass.getName':'eg.MyClass'} - filter collection where class name is "eg.MyClass".
 
-## There is a nice blog written on Jfilter.
-[querying/filtering in-memory data using JFilter] (http://blogsbyabdullah.blogspot.in/2012/07/queryingfiltering-in-memory-data-using.html)
+## Blogs written on Jfilter.
+(http://blogsbyabdullah.blogspot.in/2012/07/queryingfiltering-in-memory-data-using.html)
+(https://jasokan.wordpress.com/2012/09/03/jfilter/)
